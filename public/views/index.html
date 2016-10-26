@@ -12,17 +12,26 @@
   <link rel="stylesheet" href="vendors/bootstrap.min.css">
 </head>
 <body ng-controller="PeopleController as ctrl">
-  <button ng-click="ctrl.listPeople()">Get People</button>
+  <button ng-click="ctrl.listPeople(ctrl.select)">Get People</button>
 
+  <select name="singleSelect" ng-model="ctrl.select">
+    <option value="name">Sort by Name</option>
+    <option value="hometown">Sort by Hometown</option>
+    <option value="movie">Sort by Favorite Movie</option>
+  </select><br>
   <ul>
     <li ng-repeat="person in ctrl.people">
-      <p>{{person.name}}</p>
+      <p>Name: {{person.name}}, Hometown: {{person.hometown}}, Favorite Movie: {{person.movie}}</p>
     </li>
   </ul>
 
   <div>
     <label>Name:</label>
     <input type="text" ng-model="ctrl.name">
+    <label>Hometown:</label>
+    <input type="text" ng-model="ctrl.hometown">
+    <label>Favorite Movie:</label>
+    <input type="text" ng-model="ctrl.movie">
     <button ng-click="ctrl.addPerson()">Add Person</button>
   </div>
 </body>
